@@ -1,0 +1,351 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+
+}
+
+html {
+    background-color: #e2e2e2;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+
+header {
+    height: 93px;
+    background-color: white;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+.header-inner {
+    height: 100%;
+    justify-content: space-between;
+}
+
+
+.logo p {
+    font-style: italic;
+    font-size: .9em;
+    margin: 12.24px 0;
+    color: #777;
+}
+
+.search-box {
+    width: 669px;
+    position: relative;
+}
+
+.search-box input {
+    color: #777;
+    width: 100%;
+    height: 33px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 99px;
+    background-color: rgba(0, 0, 0, .03);
+}
+
+.search-box input:active,
+.search-box input:focus {
+    outline: none;
+}
+
+.search-box button {
+    border: none;
+    position: absolute;
+    right: 1%;
+    top: 15%;
+    color: gray;
+    background: none;
+    font-size: 18px;
+
+}
+
+.stuffs {
+    /* flex: 2; */
+    width: 112px;
+}
+
+.stuffs ul {
+    justify-content: space-between;
+}
+
+.login-btn {
+    border-radius: 99px;
+    background-color: rgb(77, 183, 179);
+}
+
+.login-btn a {
+    color: white;
+    font-size: 12.8px;
+    font-weight: bold;
+    line-height: 30.72px;
+    padding: 0 8px;
+}
+
+.header-divider {
+    border-left: 1px solid rgba(0, 0, 0, .1);
+    height: 30px;
+}
+
+.header-cart i {
+    color: rgb(77, 183, 179);
+}
+
+nav {
+    background-color: #424242;
+}
+
+nav ul {
+    justify-content: flex-start;
+}
+
+nav ul li:not(:last-child) {
+    margin-right: 7px;
+}
+
+nav ul li:not(:first-child) {
+    margin-left: 7px;
+}
+
+nav a:visited,
+nav a {
+    color: #ccc;
+}
+
+.container .nav-bar>li a {
+    line-height: 47px;
+    font-size: 14px;
+    font-weight: 550;
+    letter-spacing: 1px;
+}
+
+.nav-bar {
+    align-items: center;
+    display: flex;
+}
+.nav-bar .nav-item:hover>a {
+    color: white;
+    transition: 0.3s;
+}
+.in-use>a {
+    color: white !important;
+}
+
+.social {
+    margin-left: auto;
+    flex: 1;
+}
+
+.social ul {
+    justify-content: flex-end;
+}
+
+.social li>a {
+    margin: 0 4.9px;
+}
+
+/* === HEADER ===*/
+
+main {
+    margin-top: 47px;
+}
+
+/*============================*/
+/*-----------BANNER-----------*/
+/*============================*/
+
+.banner {
+    height: 600px;
+    background-color: cadetblue;
+    text-align: center;
+    background-image: url("./img/Fushimi-Inari.png");
+    background-size: cover;
+    position: relative;
+}
+
+.banner div {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.banner h1 {
+    text-transform: uppercase;
+    color: white;
+    width: 325px;
+    line-height: 48px;
+    font-size: 45px;
+    text-shadow: 0 0 2px yellow;
+}
+
+.banner button {
+    font-weight: bold;
+    border: none;
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.banner a {
+    background: #007784;
+    padding: 12px;
+    color: white;
+}
+
+.banner p {
+    width: fit-content;
+    border-bottom: 2px solid white;
+    margin: 0 auto;
+}
+
+/*============================*/
+/*-----------CONTENT-----------*/
+/*============================*/
+.content {
+    padding: 0 55px;
+    background-color: white;
+}
+
+.section {
+    padding-bottom: 21px;
+}
+
+.sec-title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding: 24px 55px;
+}
+
+.sec-title p {
+    color: #555555;
+    flex: 1;
+}
+
+.sec-title b {
+    background-color: black;
+    opacity: .1;
+    flex: 1;
+    height: 2px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.space-around {
+    justify-content: space-around;
+}
+.row-item {
+    display: inline-block;
+    position: relative;
+}
+
+
+.row-item.category div {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(256, 256, 256, .9);
+    width: 100%;
+    text-align: center;
+    color: #636363;
+    text-transform: uppercase;
+    padding: 12px 14px 14px;
+    font-size: 21px;
+    letter-spacing: .05em;
+    overflow: hidden;
+}
+.row-item.row-item.category:hover div {
+    background-color: #11519b;
+    color: white;
+    transition: 0.3s;
+}
+.row-item.category p {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.best-selling .row-item>div{
+    width: 247px;
+}
+.best-selling .type p {
+    color: #777;    
+    font-weight: 100;
+    font-size: 10.8px;
+}
+.best-selling .name p {
+    color: #636363;
+}
+.price p {
+    color: black;
+    font-weight: bold;
+}
+.best-selling .row-item>div {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.brief p {
+    line-height: 1.3em;
+}
+.cart a:last-child{
+    color: #11519b;
+    border: 2px solid #11519b;
+    display: block;
+    width: 120px;
+    line-height: 1.3em;
+    padding: 8px 14px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 8px;
+
+}
+/*============================*/
+/*-----------FOOTER-----------*/
+/*============================*/
+
+footer {
+    background-color: #00377f;
+    /* display: flex; */
+    color:white;
+    padding: 20px;
+}
+.footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.footer p {
+    line-height: 1.3em;
+}
+.footer div {
+    margin-left: 200px;
+}
+.footer img {
+    width: 80px;
+    margin-right: 200px;
+}
