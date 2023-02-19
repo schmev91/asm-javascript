@@ -1,0 +1,12 @@
+main {
+    background: white;
+}
+.wrapper {
+    padding: 40px 55px;
+}
+.wrapper img {
+    width: 500px;
+}
+.product {
+    display: flex;
+}
