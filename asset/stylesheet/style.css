@@ -180,7 +180,7 @@ main {
     height: 600px;
     background-color: cadetblue;
     text-align: center;
-    background-image: url("./img/Fushimi-Inari.png");
+    background-image: url("../img/Fushimi-Inari.png");
     background-size: cover;
     position: relative;
 }

@@ -1,0 +1,21 @@
+main {
+    background: #fff;
+}
+.contact {
+    padding: 26px 55px;
+    display: flex;
+}
+.contact h3 {
+    border-bottom: 3px solid #ddd;
+    width: fit-content;
+    margin-bottom: 15px;
+}
+.contact span {
+    line-height: 27px;
+}
+.contact-info {
+    flex: 3;
+}
+.contact-map {
+    flex: 7;
+}

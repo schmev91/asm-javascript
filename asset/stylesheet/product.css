@@ -73,3 +73,47 @@ main {
     font-weight: bold;
     font-size: 16px;
 }
+
+.disclaimer {
+    color: #ff0000 !important;
+}
+.info .cat * {
+    font-size: 12.8px;
+    color: #777;
+
+}
+.info .cat a:hover {
+    color: #1e73be;
+}
+.info .cat span {
+    display: block;
+    padding: 5px 0;
+    border-top: 1px dotted #ddd;
+    margin: 15px 0;
+}
+
+.des>div {
+    padding: 10px 15px;
+}
+.des div:nth-child(1) {
+    border-top: 2px solid #11519B;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    width: fit-content;
+    color: hsla(0,0%,7%,.85);
+}
+.des div:nth-child(2) {
+    border: 1px solid #ddd;
+    width: fit-content;
+    color: #777;
+
+}
+.des table {
+    text-align: left;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+.des table * {
+    border: 1px solid #ccc;
+    padding: 0 3px;
+}
