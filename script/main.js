@@ -10,17 +10,22 @@ function changePage(path) {
             main.innerHTML = text
         })
 }
+function setNavigate(id, name){
+    let mainPages = ['home','shop','blog','policy','contact','fact','aboutus']
+    document.getElementById(id).addEventListener('click',()=>{
+        styleSheet.href=`asset/stylesheet/${mainPages.includes(name) ? name : "product"}.css`
+        changePage(`sub-pages/${name}-main.html`)
+    })
+}
+
 //once
 changePage("sub-pages/home-main.html")
 
 //home
-document.getElementById("goto-home").addEventListener('click',()=>{
-    styleSheet.href="asset/stylesheet/home.css"
-    changePage("sub-pages/home-main.html")
-})
+setNavigate("goto-home","home")
 
 //contact
-document.getElementById("goto-contact").addEventListener('click',()=>{
-    styleSheet.href="asset/stylesheet/contact.css"
-    changePage("sub-pages/contact-main.html")
-})
+setNavigate("goto-contact","contact")
+
+//product-lucky_fish
+setNavigate("goto-lucky_fish","lucky_fish")

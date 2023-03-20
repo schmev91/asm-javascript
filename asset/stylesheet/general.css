@@ -157,6 +157,9 @@ nav li {
     margin-left: auto;
     flex: 1;
 }
+.social a {
+    color: white;
+}
 
 .social ul {
     justify-content: flex-end;
