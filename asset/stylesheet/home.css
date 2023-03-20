@@ -1,0 +1,155 @@
+
+/*============================*/
+/*-----------BANNER-----------*/
+/*============================*/
+
+.banner {
+    height: 600px;
+    background-color: cadetblue;
+    text-align: center;
+    background-image: url("../img/Fushimi-Inari.png");
+    background-size: cover;
+    position: relative;
+}
+
+.banner div {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.banner h1 {
+    text-transform: uppercase;
+    color: white;
+    width: 325px;
+    line-height: 48px;
+    font-size: 45px;
+    text-shadow: 0 0 2px yellow;
+}
+
+.banner button {
+    font-weight: bold;
+    border: none;
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.banner a {
+    background: #007784;
+    padding: 12px;
+    color: white;
+}
+
+.banner p {
+    width: fit-content;
+    border-bottom: 2px solid white;
+    margin: 0 auto;
+}
+
+/*============================*/
+/*-----------CONTENT-----------*/
+/*============================*/
+.content {
+    padding: 0 55px;
+    background-color: white;
+}
+
+.section {
+    padding-bottom: 21px;
+}
+
+.sec-title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding: 24px 55px;
+}
+
+.sec-title p {
+    color: #555555;
+    flex: 1;
+}
+
+.sec-title b {
+    background-color: black;
+    opacity: .1;
+    flex: 1;
+    height: 2px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.space-around {
+    justify-content: space-around;
+}
+.row-item {
+    display: inline-block;
+    position: relative;
+}
+
+
+.row-item.category div {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(256, 256, 256, .9);
+    width: 100%;
+    text-align: center;
+    color: #636363;
+    text-transform: uppercase;
+    padding: 12px 14px 14px;
+    font-size: 21px;
+    letter-spacing: .05em;
+    overflow: hidden;
+}
+.row-item.row-item.category:hover div {
+    background-color: #11519b;
+    color: white;
+    transition: 0.3s;
+}
+.row-item.category p {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.best-selling .row-item>div{
+    width: 247px;
+}
+.best-selling .type p {
+    color: #777;    
+    font-weight: 100;
+    font-size: 10.8px;
+}
+.best-selling .name p {
+    color: #636363;
+}
+.price p {
+    color: black;
+    font-weight: bold;
+}
+.best-selling .row-item>div {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.brief p {
+    line-height: 1.3em;
+}
+.cart a:last-child{
+    color: #11519b;
+    border: 2px solid #11519b;
+    display: block;
+    width: 120px;
+    line-height: 1.3em;
+    padding: 8px 14px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 8px;
+
+}
