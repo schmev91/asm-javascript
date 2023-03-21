@@ -1,39 +1,75 @@
 main {
     background: white;
 }
+
 .wrapper {
     padding: 40px 55px;
 }
+
 .wrapper img {
     width: 500px;
+    max-height: 500px;
 }
+
 .product {
     display: flex;
+}
+
+.img-option {
+    display: flex;
+    margin-top: 12px;
+}
+
+.img-option img {
+    width: 100px;
+    height: 100px;
+    opacity: 0.4;
+    margin-bottom: -10px;
+}
+
+.img-option img:hover {
+    border-color: rgba(0, 0, 0, .3);
+    opacity: 1;
+    transform: translateY(-5px);
+    transition: transform .6s,opacity .6s;
+}
+
+.img-option-item {
+    margin-right: 12px;
+    overflow-y: hidden;
+}
+.img-option-displaying img{
+    opacity: 1;
+    margin: 0;
 }
 
 .info {
     padding: 10px 15px;
     max-width: 50%;
 }
+
 .info h1 {
     font-size: 27.2px;
     color: #555;
     margin-bottom: 14px;
 }
+
 .divider {
     background-color: rgba(0, 0, 0, 0.1);
     height: 3px;
     max-width: 30px;
 }
+
 .info h2 {
     margin: 12px 0;
 }
+
 .info p {
     color: #777;
     margin-bottom: 21px;
 }
 
-.cart form{
+.cart form {
     display: flex;
     margin-bottom: 21px;
 }
@@ -42,23 +78,28 @@ main {
     display: flex;
     margin-right: 16px;
 }
+
 .quantity input {
     outline: none;
     border: 1px #ddd solid;
     text-align: center;
 }
+
 .quantity input[type="button"] {
     width: 25px;
     background-color: #f9f9f9;
     transition: 0.3s;
 }
+
 .quantity input[type="button"]:hover {
     box-shadow: inset 0 0 0 100px rgb(0 0 0 / 20%);
 }
+
 .quantity input[type="number"] {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05) inset;
     width: 40px;
 }
+
 .quantity input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
@@ -77,14 +118,17 @@ main {
 .disclaimer {
     color: #ff0000 !important;
 }
+
 .info .cat * {
     font-size: 12.8px;
     color: #777;
 
 }
+
 .info .cat a:hover {
     color: #1e73be;
 }
+
 .info .cat span {
     display: block;
     padding: 5px 0;
@@ -95,24 +139,28 @@ main {
 .des>div {
     padding: 10px 15px;
 }
+
 .des div:nth-child(1) {
     border-top: 2px solid #11519B;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     width: fit-content;
-    color: hsla(0,0%,7%,.85);
+    color: hsla(0, 0%, 7%, .85);
 }
+
 .des div:nth-child(2) {
     border: 1px solid #ddd;
     width: fit-content;
     color: #777;
 
 }
+
 .des table {
     text-align: left;
     border: 1px solid #ccc;
     border-collapse: collapse;
 }
+
 .des table * {
     border: 1px solid #ccc;
     padding: 0 3px;

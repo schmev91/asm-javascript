@@ -1,0 +1,41 @@
+.cart-container {
+    background-color: lightblue;
+    width: 420px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+}
+
+.cart-container {
+    display: flex;
+}
+
+.cart-container>div {
+    height: 100%;
+}
+
+.cart-close i {
+    font-size: 27px;
+    width: 54px;
+    height: 54px;
+    padding: 15px;
+    color: #434242;
+}
+
+.cart-items {
+    flex: 1;
+    text-align: center;
+    vertical-align: center;
+}
+
+.cart-items h3 {
+    line-height: 54px;
+    color: #434242;
+
+}
+
+.hidden {
+    display: none;
+}

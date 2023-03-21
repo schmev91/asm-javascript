@@ -117,6 +117,9 @@
     font-weight: 300;
     text-transform: lowercase;
 }
+.row-item img {
+    cursor: pointer;
+}
 
 .best-selling .row-item>div{
     width: 247px;
@@ -139,6 +142,7 @@
 }
 .brief p {
     line-height: 1.3em;
+    cursor: pointer;
 }
 .cart a:last-child{
     color: #11519b;
