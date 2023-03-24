@@ -1,13 +1,13 @@
 class cartItem {
-    constructor (name, price, quantity, imgPath){
+    constructor(name, price, quantity, imgPath) {
         this.name = name
         this.price = price
         this.quantity = quantity
         this.imgPath = imgPath
     }
-    toHtml(itemId){
+    toHtml() {
         return `<li>
-        <div itemId="${itemId}" class="cart-item">
+        <div class="cart-item">
             <div class="item-thumbnail">
                 <img src="${this.imgPath}" alt="">
             </div>
@@ -17,66 +17,104 @@ class cartItem {
                     <span class="item-quantity">${this.quantity}</span> x <span class="item-price">${this.price}</span>
                 </div>
             </div>
-            <div class="close">
+            <div class="close" onclick="removeCartItem('${this.name}')">
                 <i class="fa-regular fa-circle-xmark"></i>
             </div>
         </div>
     </li>`
     }
-    getPrice(){
-        return Number(this.price.slice(0,this.price.indexOf('$')))
+    getPrice() {
+        return Number(this.price.slice(0, this.price.indexOf('$')))
+    }
+    getQuantity() {
+        return Number(this.quantity)
+    }
+    increaseQuantity(amount) {
+        this.quantity = Number(this.quantity) + Number(amount)
     }
 }
 
 var cart = document.querySelector('.cart-container')
-, cartBtn = document.querySelector('.header-cart')
-, closeCartBtn = document.querySelector('.cart-header .close i')
-, cartFooter = document.querySelector('.cart-content .footer')
-, itemList = document.querySelector('.cart-content>ul')
-, itemsArr = []
+    , cartBtn = document.querySelector('.header-cart')
+    , closeCartBtn = document.querySelector('.cart-header .close i')
+    , cartFooter = document.querySelector('.cart-content .footer')
+    , itemList = document.querySelector('.cart-content>ul')
+    , itemsArr = []
 
 
-function addToCart(){
+function addToCart() {
+    const productName = document.querySelector('.product-name').innerText,
+        productQuantity = document.querySelector('.product-quantity').value
 
-    itemsArr.push(new cartItem(
-        document.querySelector('.product-name').innerText,
-        document.querySelector('.product-price').innerText,
-        document.querySelector('.product-quantity').value,
-        document.querySelector('.product-image').src
-    ))
-    console.log(itemsArr[itemsArr.length-1])
+    let duplicateIndex,
+        isDuplicate
+
+    if (itemsArr.length) {
+        isDuplicate = itemsArr.some((item, index) => {
+            if (item.name == productName) {
+                duplicateIndex = index
+                return true
+            }
+            return false
+        })
+    }
+
+    if (isDuplicate) {
+        itemsArr[duplicateIndex].increaseQuantity(productQuantity)
+    } else {
+        itemsArr.push(new cartItem(
+            productName,
+            document.querySelector('.product-price').innerText,
+            productQuantity,
+            document.querySelector('.product-image').src
+        ))
+    }
+
+
     reloadCart()
 }
-function reloadCart(){
-    itemList.innerHTML=''
-    if(itemsArr.length){
-        itemsArr.forEach((item, index)=>{
-            itemList.innerHTML+=item.toHtml(index)
-        })
-        cartFooter.innerHTML = cartFooterRender(
-            itemsArr.reduce(
-                (total, item)=>total+item.getPrice()
-                ,0
-                )
-        )
 
-    }
+function removeCartItem(name) {
+    let removeItemIndex
+    itemsArr.some((item, index) => {
+        if (item.name == name) {
+            removeItemIndex = index
+            return true
+        }
+        return false
+    })
+    itemsArr.splice(removeItemIndex, 1)
+    reloadCart()
 }
-function cartFooterRender(subtotal){
+
+function cartFooterRender(subtotal) {
     return `<div>
     <p><Strong>Tạm tính: </Strong><span class="cart-subtotal">${subtotal}$</span></p>
 </div>
 <button type="button">THANH TOÁN</button>`
 }
 
-function prepareProductPage(){
+function reloadCart() {
+    itemList.innerHTML = ''
+    cartFooter.innerHTML = ''
+    if (itemsArr.length) {
+        itemsArr.forEach((item, index) => {
+            itemList.innerHTML += item.toHtml(index)
+        })
+        cartFooter.innerHTML = cartFooterRender(
+            itemsArr.reduce(
+                (total, item) => total + item.getPrice() * item.getQuantity()
+                , 0
+            )
+        )
 
+    }
 }
 
 //ON - OFF CART PANEL
-cartBtn.addEventListener('click',()=>{
+cartBtn.addEventListener('click', () => {
     cart.classList.remove('hidden')
 })
-closeCartBtn.addEventListener('click',()=>{
+closeCartBtn.addEventListener('click', () => {
     cart.classList.add('hidden')
 })
