@@ -35,6 +35,7 @@ main {
 }
 
 .img-option-item {
+    cursor: pointer;
     margin-right: 12px;
     overflow-y: hidden;
 }

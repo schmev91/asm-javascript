@@ -32,7 +32,6 @@ function setNavigate(className, path) {
     }
 }
 function productScript() {
-    console.log("i ran")
     var items = document.getElementsByClassName("img-option-item"),
         image = document.querySelector(".img>img"),
         inUseNode = items[0]
@@ -46,6 +45,19 @@ function productScript() {
         })
     }
 }
+
+setTimeout(() => {
+    let productImages = document.querySelectorAll('.best-selling .row-item')
+    console.log(productImages)
+    for(productImage of productImages){
+        productImage.addEventListener('mouseover',(e)=>{
+            e.target.parentNode.classList.add('row-item-blur')
+        })
+        productImage.addEventListener('mouseout',(e)=>{
+            e.target.parentNode.classList.remove('row-item-blur')
+        })
+    }
+}, 1000);
 
 // once
 fetch('sub-pages/home-main.html')

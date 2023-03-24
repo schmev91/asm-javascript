@@ -132,6 +132,7 @@ nav ul li:not(:first-child) {
 
 nav li {
     color: #ccc;
+    cursor: pointer;
 }
 
 .container .nav-bar>li a {

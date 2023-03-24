@@ -5,7 +5,6 @@ var cart = document.querySelector('.cart-container')
 cartBtn.addEventListener('click',()=>{
     cart.classList.remove('hidden')
 })
-console.log(cart)
 closeCartBtn.addEventListener('click',()=>{
     cart.classList.add('hidden')
 })
