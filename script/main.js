@@ -1,4 +1,3 @@
-
 var styleSheet = document.getElementsByTagName("link")[1],
     main = document.querySelector("main"),
     mainPages = ['home', 'shop', 'blog', 'policy', 'contact', 'fact', 'aboutus']
@@ -48,7 +47,6 @@ function productScript() {
 
 setTimeout(() => {
     let productImages = document.querySelectorAll('.best-selling .row-item')
-    console.log(productImages)
     for(productImage of productImages){
         productImage.addEventListener('mouseover',(e)=>{
             e.target.parentNode.classList.add('row-item-blur')
@@ -63,10 +61,6 @@ setTimeout(() => {
 fetch('sub-pages/home-main.html')
     .then(res => res.text())
     .then(setMain)
-// //cart
-// fetch('sub-pages/cart-main.html')
-//     .then(res=>res.text())
-//     .then(res=>document.querySelector('body').innerHTML+=res)
 
 //home
 setNavigate("goto-home", "home")

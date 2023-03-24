@@ -1,3 +1,4 @@
+//images slider
 var items = document.getElementsByClassName("img-option-item"),
 image = document.querySelector(".img>img"),
 inUseNode=items[0]
@@ -10,3 +11,4 @@ for(i=0; i<items.length; i++){
         inUseNode=e.target.parentNode
     })
 }
+//end images sliders

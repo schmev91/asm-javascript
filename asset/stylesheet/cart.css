@@ -1,40 +1,31 @@
 .cart-container {
-    background-color: lightblue;
+    background-color: rgba(173, 216, 230, .9);
     width: 420px;
     height: 100vh;
     position: fixed;
     top: 0;
     right: 0;
-
 }
 
-.cart-container {
+.cart-header {
     display: flex;
+    height: 54px;
+    margin-bottom: 21px;
+}
+.cart-header .title {
+    line-height: 54px;
+    text-align: center;
+    flex: 1;
+    letter-spacing: 1px;
 }
 
-.cart-container>div {
-    height: 100%;
-}
-
-.cart-close i {
+.cart-header .close i {
     font-size: 27px;
     width: 54px;
-    height: 54px;
     padding: 15px;
     color: #434242;
 }
 
-.cart-items {
-    flex: 1;
-    text-align: center;
-    vertical-align: center;
-}
-
-.cart-items h3 {
-    line-height: 54px;
-    color: #434242;
-
-}
 
 .hidden {
     display: none;

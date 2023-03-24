@@ -70,42 +70,46 @@ main {
     margin-bottom: 21px;
 }
 
-.cart form {
+.cart-option form {
     display: flex;
     margin-bottom: 21px;
 }
-
-.quantity {
-    display: flex;
-    margin-right: 16px;
+.cart-option form * {
+    cursor: pointer;
 }
 
-.quantity input {
+.cart-option .quantity {
+    display: flex;
+    margin-right: 16px;
+    
+}
+
+.cart-option .quantity input {
     outline: none;
     border: 1px #ddd solid;
     text-align: center;
 }
 
-.quantity input[type="button"] {
+.cart-option .quantity input[type="button"] {
     width: 25px;
     background-color: #f9f9f9;
     transition: 0.3s;
 }
 
-.quantity input[type="button"]:hover {
+.cart-option .quantity input[type="button"]:hover {
     box-shadow: inset 0 0 0 100px rgb(0 0 0 / 20%);
 }
 
-.quantity input[type="number"] {
+.cart-option .quantity input[type="number"] {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05) inset;
     width: 40px;
 }
 
-.quantity input[type="number"]::-webkit-inner-spin-button {
+.cart-option .quantity input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
 
-.cart .btn {
+.cart-option .btn {
     border: none;
     line-height: 40px;
     background-color: #007784;
