@@ -186,18 +186,18 @@ footer {
     color:white;
     padding: 20px;
 }
-.footer {
+footer .footer {
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
 }
-.footer p {
+footer .footer p {
     line-height: 1.3em;
 }
-.footer div {
+footer .footer div {
     margin-left: 200px;
 }
-.footer img {
+footer .footer img {
     width: 80px;
     margin-right: 200px;
 }
