@@ -10,5 +10,6 @@ for(i=0; i<items.length; i++){
         inUseNode.classList.remove("img-option-displaying")
         inUseNode=e.target.parentNode
     })
+    console.log('haha')
 }
 //end images sliders

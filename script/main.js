@@ -30,6 +30,8 @@ function setNavigate(className, path) {
         })
     }
 }
+
+//===PRODUCT===
 function productScript() {
     var items = document.getElementsByClassName("img-option-item"),
         image = document.querySelector(".img>img"),
@@ -45,6 +47,18 @@ function productScript() {
     }
 }
 
+function quantityEditor({value, step}){
+    let quantityNode = document.querySelector('.product-quantity'),
+    quantityValue = Number(quantityNode.value)
+    if(value=='-' && quantityValue==1) return
+    
+    quantityValue += value=='+' ? Number(step) : -Number(step)
+    quantityNode.value=quantityValue
+
+}
+
+
+//Blur best-selling image on hover
 setTimeout(() => {
     let productImages = document.querySelectorAll('.best-selling .row-item')
     for(productImage of productImages){
@@ -57,7 +71,7 @@ setTimeout(() => {
     }
 }, 1000);
 
-// once
+//ONCE - Home page loader
 fetch('sub-pages/home-main.html')
     .then(res => res.text())
     .then(setMain)
@@ -75,7 +89,7 @@ function overlayLoader(path){
     .then(data=>{
         document.querySelector('.overlay').innerHTML = data 
     })
-    
+
     displayOverlay()
 }
 function hideOverlay(){
