@@ -96,12 +96,13 @@ header {
     background-color: rgb(77, 183, 179);
 }
 
-.login-btn a {
+.login-btn span {
     color: white;
     font-size: 12.8px;
-    font-weight: bold;
+    font-weight: bold;  
     line-height: 30.72px;
     padding: 0 8px;
+    cursor: pointer;
 }
 
 .header-divider {
@@ -111,6 +112,7 @@ header {
 
 .header-cart i {
     color: rgb(77, 183, 179);
+    cursor: pointer;
 }
 
 nav {
@@ -200,4 +202,10 @@ footer .footer div {
 footer .footer img {
     width: 80px;
     margin-right: 200px;
+}
+
+
+
+.hidden {
+    display: none;
 }

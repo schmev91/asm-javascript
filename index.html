@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="asset/stylesheet/general.css">
     <link rel="stylesheet" href="asset/stylesheet/home.css">
     <link rel="stylesheet" href="asset/stylesheet/cart.css">
+    <link rel="stylesheet" href="asset/stylesheet/overlay.css">
 
     <script src="https://kit.fontawesome.com/9799b88c72.js" crossorigin="anonymous"></script>
 </head>
@@ -31,11 +32,7 @@
             <div class="stuffs">
                 <ul class="flex-row">
                     <li class="login-btn">
-                        <div>
-                            <a href="">
-                                <span>Đăng nhập</span>
-                            </a>
-                        </div>
+                        <span onclick="overlayLoader('sub-pages/overlay/login-main.html')">Đăng nhập</span>
                     </li>
                     <li class="header-divider"></li>
                     <li class="header-cart">
@@ -111,6 +108,9 @@
         </div>  
     </div>
 
+    <div class="overlay hidden">
+        
+    </div>
 </body>
 
 <script src="https://uhchat.net/code.php?f=f006aa"></script>

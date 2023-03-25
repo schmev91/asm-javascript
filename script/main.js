@@ -68,3 +68,20 @@ setNavigate("goto-home", "home")
 //contact
 setNavigate("goto-contact", "contact")
 
+//===OVERLAY===
+function overlayLoader(path){
+    fetch(path)
+    .then(res=>res.text())
+    .then(data=>{
+        document.querySelector('.overlay').innerHTML = data 
+    })
+    
+    displayOverlay()
+}
+function hideOverlay(){
+    document.querySelector('.overlay').classList.add('hidden')
+}
+function displayOverlay(){
+    document.querySelector('.overlay').classList.remove('hidden')
+}
+
