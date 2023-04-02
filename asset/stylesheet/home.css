@@ -83,9 +83,6 @@
     display: flex;
     justify-content: space-between;
 }
-.space-around {
-    justify-content: space-around;
-}
 .row-item {
     display: inline-block;
     position: relative;
@@ -93,6 +90,9 @@
 .row-item-blur img {
     opacity: 0.7;
     transition: all ease 0.3;
+}
+.space-around {
+    justify-content: space-around;
 }
 
 .row-item.category div {

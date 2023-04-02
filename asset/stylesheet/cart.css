@@ -1,10 +1,14 @@
+:root {
+    --cart-width: 360px;
+}
 .cart-container {
     background-color: rgba(173, 216, 230, .97);
-    width: 360px;
+    width: var(--cart-width);
     height: 100vh;
     position: fixed;
     top: 0;
     right: 0;
+    transition: all ease 0.3s;
 }
 
 .cart-header {
@@ -99,4 +103,8 @@
     border: 1px solid #727272;
     margin-top: 24px;
     cursor: pointer;
+}
+
+.hide-cart {
+    margin-right: calc(-1 * var(--cart-width));
 }

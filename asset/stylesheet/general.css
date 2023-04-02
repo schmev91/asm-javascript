@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+::-webkit-scrollbar {
+    display: none;
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -203,7 +205,6 @@ footer .footer img {
     width: 80px;
     margin-right: 200px;
 }
-
 
 
 .hidden {

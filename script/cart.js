@@ -113,8 +113,8 @@ function reloadCart() {
 
 //ON - OFF CART PANEL
 cartBtn.addEventListener('click', () => {
-    cart.classList.remove('hidden')
+    cart.classList.remove('hide-cart')
 })
 closeCartBtn.addEventListener('click', () => {
-    cart.classList.add('hidden')
+    cart.classList.add('hide-cart')
 })
