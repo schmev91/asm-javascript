@@ -150,11 +150,11 @@ nav li {
     align-items: center;
     display: flex;
 }
-.nav-bar .nav-item:hover>a {
+.nav-bar .nav-item:hover {
     color: white;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
 }
-.in-use>a {
+.in-use {
     color: white !important;
 }
 
