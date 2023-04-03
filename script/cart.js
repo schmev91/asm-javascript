@@ -88,8 +88,14 @@ function removeCartItem(name) {
 }
 
 function cartFooterRender(subtotal) {
+    let rounded
+    , toString = String(subtotal)
+    if(toString.indexOf('.') >= 0) {
+        rounded = toString.slice(toString.indexOf('.'))
+        if(rounded.length > 3) rounded = rounded.slice(0, 3)
+    }
     return `<div>
-    <p><Strong>Tạm tính: </Strong><span class="cart-subtotal">${subtotal}$</span></p>
+    <p><Strong>Tạm tính: </Strong><span class="cart-subtotal">${rounded ? toString.slice(0, toString.indexOf('.')).concat(rounded) : subtotal}$</span></p>
 </div>
 <button type="button">THANH TOÁN</button>`
 }
