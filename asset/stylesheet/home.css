@@ -5,48 +5,14 @@
 
 .banner {
     height: 600px;
-    background-color: cadetblue;
+    background-color: black;
     text-align: center;
-    background-image: url("../img/Fushimi-Inari.png");
+    background-image: url("../img/banner/3.png");
     background-size: cover;
+    background-position: center;
     position: relative;
 }
 
-.banner div {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translateY(-50%);
-    text-align: center;
-}
-
-.banner h1 {
-    text-transform: uppercase;
-    color: white;
-    width: 325px;
-    line-height: 48px;
-    font-size: 45px;
-    text-shadow: 0 0 2px yellow;
-}
-
-.banner button {
-    font-weight: bold;
-    border: none;
-    font-size: 16px;
-    margin-top: 25px;
-}
-
-.banner a {
-    background: #007784;
-    padding: 12px;
-    color: white;
-}
-
-.banner p {
-    width: fit-content;
-    border-bottom: 2px solid white;
-    margin: 0 auto;
-}
 
 /*============================*/
 /*-----------CONTENT-----------*/

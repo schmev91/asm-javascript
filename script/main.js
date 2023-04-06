@@ -134,7 +134,7 @@ function productLoader(productList) {
                 <p>${product.price}$</p>
             </div>
             <div class="cart">
-                <a href="#">THÊM VÀO GIỎ</a>
+                <a>THÊM VÀO GIỎ</a>
                 
             </div>
         </div>
@@ -173,4 +173,3 @@ function hideOverlay() {
 function displayOverlay() {
     document.querySelector('.overlay').classList.remove('hidden')
 }
-

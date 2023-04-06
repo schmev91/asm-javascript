@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 ::-webkit-scrollbar {
     display: none;
 }
@@ -25,6 +27,9 @@ body {
 header {
     height: 93px;
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 3;
 }
 
 .flex-row {
