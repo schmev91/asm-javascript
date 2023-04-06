@@ -3,17 +3,43 @@
 /*-----------BANNER-----------*/
 /*============================*/
 
+.banner-container {
+    position: relative;
+}
 .banner {
     height: 600px;
     background-color: black;
     text-align: center;
-    background-image: url("../img/banner/3.png");
+    /* background-image: url("../img/banner/3.png"); */
     background-size: cover;
     background-position: center;
     position: relative;
 }
-
-
+.banner button {
+    border-radius: 9px;
+}
+.banner-button {
+    --buttonSize: 60px;
+    color: white;
+    font-size: var(--buttonSize);
+    -webkit-text-stroke: 2px white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    transition: all ease 0.3s;
+    cursor: pointer;
+    text-shadow: 0 0 9px black;
+}
+.banner-button:hover {
+    font-size: calc(1.5 * var(--buttonSize));
+}
+.banner-leftButton {
+    left: 1.5%;
+}
+.banner-rightButton {
+    right: 1.5%;
+}
 /*============================*/
 /*-----------CONTENT-----------*/
 /*============================*/
@@ -52,6 +78,9 @@
 .row-item {
     display: inline-block;
     position: relative;
+    background-color: rgba(156, 156, 156, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
 }
 .row-item-blur img {
     opacity: 0.7;
@@ -109,6 +138,10 @@
     padding-top: 10px;
     padding-bottom: 20px;
 }
+.brief {
+    padding-left: 6px;
+    padding-right: 6px;
+}
 .brief p {
     line-height: 1.3em;
     cursor: pointer;
@@ -124,5 +157,5 @@
     font-weight: bold;
     font-size: 12px;
     margin-top: 8px;
-
+    cursor: pointer;
 }

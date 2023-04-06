@@ -117,6 +117,20 @@ header {
     height: 30px;
 }
 
+.header-cart {
+    position: relative;
+}
+.header-cartQuantity {
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    background-color: lightcoral;
+    padding: 12.5% 25%;
+    border-radius: 99px;
+    top:-50%;
+    right:-50%;
+    display: none;
+}
 .header-cart i {
     color: rgb(77, 183, 179);
     cursor: pointer;

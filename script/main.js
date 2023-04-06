@@ -11,13 +11,16 @@ function setStyle(path) {
 function changePage(path) {
     window.scrollTo(0, 0);
     let isHome = path == 'home'
-    ,isProduct = !mainPages.includes(path)
+        , isProduct = !mainPages.includes(path)
     //html
     fetch(`sub-pages/${path}-main.html`)
         .then(res => res.text())
         .then(text => {
             setMain(text)
-            if(isHome) productLoader(bestSellingProducts)
+            if (isHome) {
+                productLoader(bestSellingProducts)
+                bannerLoader()
+            }
         })
     //css
     setStyle(`asset/stylesheet/${isProduct ? "product" : path}.css`)
@@ -61,19 +64,39 @@ function quantityEditor({ value, step }) {
 }
 //===END-PRODUCT===
 
-
-//Blur best-selling image on hover
-setTimeout(() => {
-    let productImages = document.querySelectorAll('.best-selling .row-item')
-    for (productImage of productImages) {
-        productImage.addEventListener('mouseover', (e) => {
-            e.target.parentNode.classList.add('row-item-blur')
-        })
-        productImage.addEventListener('mouseout', (e) => {
-            e.target.parentNode.classList.remove('row-item-blur')
-        })
+var bannerIndex = 1
+function bannerHandler(value) {
+    bannerIndex += value
+    if (bannerIndex > 3) {
+        bannerIndex = 1
+    } else if (bannerIndex < 1) {
+        bannerIndex = 3
     }
-}, 1000);
+    fetch(`./script/asset/banner/${bannerIndex}.html`)
+        .then(res => res.text())
+        .then(data=>{
+            changeBanner(data, bannerIndex)
+        })
+
+}
+function changeBanner(content, backgroundIndex) {
+    let bannerNode = document.getElementsByClassName('banner')[0]
+    bannerNode.innerHTML = content
+    bannerNode.style.backgroundImage = `url(./asset/img/banner/${backgroundIndex}.png)`
+
+}
+function bannerLoader(){
+    fetch(`./script/asset/banner/${bannerIndex}.html`)
+        .then(res => res.text())
+        .then(data=>{
+            changeBanner(data, bannerIndex)
+            document.getElementsByClassName('banner-leftButton')[0]
+            .addEventListener('click',function(){bannerHandler(-1)})
+            document.getElementsByClassName('banner-rightButton')[0]
+            .addEventListener('click',function(){bannerHandler(1)})
+        })
+
+}
 
 class product {
     constructor(alias, className, name, type, price, imgPath) {
@@ -82,7 +105,7 @@ class product {
             this.name = name,
             this.type = type,
             this.price = price
-            this.imgPath = imgPath
+        this.imgPath = imgPath
     }
 }
 var bestSellingProducts = []
@@ -117,11 +140,11 @@ bestSellingProducts.push(
 
 function productLoader(productList) {
     let section = document.querySelector('.section.best-selling')
-    , newRow = document.createElement('div')
+        , newRow = document.createElement('div')
     newRow.classList.add('row')
 
-    for(product of productList){
-        newRow.innerHTML +=`<div class="row-item">
+    for (product of productList) {
+        newRow.innerHTML += `<div class="row-item">
         <img src="${product.imgPath}" class="${product.className}" onclick="changePage('${product.alias}')" alt="">
         <div class="brief">
             <div class="type">
@@ -133,13 +156,14 @@ function productLoader(productList) {
             <div class="price">
                 <p>${product.price}$</p>
             </div>
-            <div class="cart">
-                <a>THÊM VÀO GIỎ</a>
-                
-            </div>
+            
         </div>
     </div>`
-    }
+}
+//     `<div class="cart">
+//     <a>THÊM VÀO GIỎ</a>
+    
+// </div>`
     section.appendChild(newRow)
 }
 
@@ -149,6 +173,7 @@ fetch('sub-pages/home-main.html')
     .then(content => {
         setMain(content)
         productLoader(bestSellingProducts)
+        bannerLoader()
     })
 
 //home

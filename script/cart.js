@@ -115,6 +115,13 @@ function reloadCart() {
         )
 
     }
+    //setQuantity
+    let cartQuantity = document.querySelector('.header-cartQuantity')
+    if(itemsArr.length)
+    {
+        cartQuantity.innerHTML = itemsArr.length
+        cartQuantity.style.display = 'block'
+    } else cartQuantity.style.display = 'none'
 }
 
 //ON - OFF CART PANEL
