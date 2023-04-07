@@ -1,0 +1,4 @@
+lucky_fish|goto-lucky_fish|Chuông thủy âm hình cá Mizu Bell|MAY MẮN VÀ HẠNH PHÚC|16.96|../asset/img/best-selling/bs1.webp
+music_bell|goto-music_bell|Bùa hộ mệnh chuông nhạc, thủy âm dễ thương|MAY MẮN VÀ HẠNH PHÚC|16.96|../asset/img/best-selling/bs2.webp
+lucky_mallet|goto-lucky_mallet|Cái vồ may mắn từ đền Narita với bùa cỡ nhỏ bên trong|7 VỊ THẦN|16.96|../asset/img/best-selling/bs3.webp
+lucky_coin|goto-lucky_coin|Đồng 5 yên may mắn và sức khỏe|5 YÊN & ĐỒNG TIỀN MAY MẮN|4.96|../asset/img/best-selling/bs4.webp

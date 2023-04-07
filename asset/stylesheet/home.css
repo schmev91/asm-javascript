@@ -81,10 +81,16 @@
     background-color: rgba(156, 156, 156, 0.1);
     border-radius: 12px;
     overflow: hidden;
+    transition: all ease 0.3s;
 }
-.row-item-blur img {
-    opacity: 0.7;
-    transition: all ease 0.3;
+.row-item:hover {
+    transform: translateY(-3%);
+}
+.row-item img {
+    transition: all ease 0.3s;
+}
+.row-item:hover img {
+    scale: 1.03;
 }
 .space-around {
     justify-content: space-around;

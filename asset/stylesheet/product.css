@@ -9,6 +9,7 @@ main {
 .wrapper img {
     width: 500px;
     max-height: 500px;
+    border-radius: 12px;
 }
 
 .product {
@@ -25,19 +26,20 @@ main {
     height: 100px;
     opacity: 0.4;
     margin-bottom: -10px;
+    transition: all .6s,opacity .6s;
 }
 
 .img-option img:hover {
     border-color: rgba(0, 0, 0, .3);
     opacity: 1;
-    transform: translateY(-5px);
-    transition: transform .6s,opacity .6s;
+    scale: 1.1;
 }
 
 .img-option-item {
     cursor: pointer;
     margin-right: 12px;
-    overflow-y: hidden;
+    border-radius: 12px;
+    overflow: hidden;
 }
 .img-option-displaying img{
     opacity: 1;
@@ -128,7 +130,7 @@ main {
     font-size: 12.8px;
     color: #777;
 
-}
+}   
 
 .product .info .cat a:hover {
     color: #1e73be;
@@ -155,7 +157,6 @@ main {
 
 .des div:nth-child(2) {
     border: 1px solid #ddd;
-    width: fit-content;
     color: #777;
 
 }

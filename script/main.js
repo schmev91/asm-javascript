@@ -8,23 +8,31 @@ function setMain(html) {
 function setStyle(path) {
     styleSheet.href = path
 }
-function changePage(path) {
+function changePage(alias) {
     window.scrollTo(0, 0);
-    let isHome = path == 'home'
-        , isProduct = !mainPages.includes(path)
+    let isHome = alias == 'home'
+        , isProduct = !mainPages.includes(alias)
+        , path = `sub-pages/${alias}-main.html`
+
+        if(isProduct) path = `sub-pages/products/${alias}-main.html`
+
     //html
-    fetch(`sub-pages/${path}-main.html`)
+    fetch(path)
         .then(res => res.text())
-        .then(text => {
-            setMain(text)
+        .then(content => {
+            setMain(content)
             if (isHome) {
                 productLoader(bestSellingProducts)
                 bannerLoader()
             }
+            return
+        })
+        .then(()=>{
+            if (isProduct) productScript()
         })
     //css
-    setStyle(`asset/stylesheet/${isProduct ? "product" : path}.css`)
-    if (isProduct) setTimeout(() => productScript(), 1000)
+    setStyle(`asset/stylesheet/${isProduct ? "product" : alias}.css`)
+    
 }
 
 function setNavigate(className, path) {
@@ -74,7 +82,7 @@ function bannerHandler(value) {
     }
     fetch(`./script/asset/banner/${bannerIndex}.html`)
         .then(res => res.text())
-        .then(data=>{
+        .then(data => {
             changeBanner(data, bannerIndex)
         })
 
@@ -85,15 +93,15 @@ function changeBanner(content, backgroundIndex) {
     bannerNode.style.backgroundImage = `url(./asset/img/banner/${backgroundIndex}.png)`
 
 }
-function bannerLoader(){
+function bannerLoader() {
     fetch(`./script/asset/banner/${bannerIndex}.html`)
         .then(res => res.text())
-        .then(data=>{
+        .then(data => {
             changeBanner(data, bannerIndex)
             document.getElementsByClassName('banner-leftButton')[0]
-            .addEventListener('click',function(){bannerHandler(-1)})
+                .addEventListener('click', function () { bannerHandler(-1) })
             document.getElementsByClassName('banner-rightButton')[0]
-            .addEventListener('click',function(){bannerHandler(1)})
+                .addEventListener('click', function () { bannerHandler(1) })
         })
 
 }
@@ -108,72 +116,69 @@ class product {
         this.imgPath = imgPath
     }
 }
+
 var bestSellingProducts = []
-bestSellingProducts.push(
-    new product('lucky_fish'
-        , 'goto-lucky_fish'
-        , 'Chuông thủy âm hình cá Mizu Bell'
-        , 'MAY MẮN VÀ HẠNH PHÚC'
-        , 16.96
-        , '../asset/img/best-selling/bs1.webp'))
-bestSellingProducts.push(
-    new product('music_bell'
-        , 'goto-music_bell'
-        , 'Bùa hộ mệnh chuông nhạc, thủy âm dễ thương'
-        , 'MAY MẮN VÀ HẠNH PHÚC'
-        , 16.96
-        , '../asset/img/best-selling/bs2.webp'))
-bestSellingProducts.push(
-    new product('lucky_mallet'
-        , 'goto-lucky_mallet'
-        , 'Cái vồ may mắn từ đền Narita với bùa cỡ nhỏ bên trong'
-        , '7 VỊ THẦN'
-        , 16.96
-        , '../asset/img/best-selling/bs3.webp'))
-bestSellingProducts.push(
-    new product('lucky_coin'
-        , 'goto-lucky_coin'
-        , 'Đồng 5 yên may mắn và sức khỏe'
-        , '5 YÊN & ĐỒNG TIỀN MAY MẮN'
-        , 4.96
-        , '../asset/img/best-selling/bs4.webp'))
+async function productDataGetter() {
+    await fetch('script/asset/productData.txt')
+        .then(res => res.text())
+        .then(productData => {
+            let rawData = productData.split(/\r\n/)
+            bestSellingProducts = rawData.map(dataChunk => {
+                return new product(...dataChunk.split('|'))
+            })
 
-function productLoader(productList) {
+        })
+}
+
+function productLoader() {
     let section = document.querySelector('.section.best-selling')
-        , newRow = document.createElement('div')
-    newRow.classList.add('row')
+        , rowAmount = bestSellingProducts.length / 4
+        , productIndex = 0
+        , ITEM_AMOUNT = 4
 
-    for (product of productList) {
-        newRow.innerHTML += `<div class="row-item">
-        <img src="${product.imgPath}" class="${product.className}" onclick="changePage('${product.alias}')" alt="">
+    for (let index = 1; index <= rowAmount; ++index) {
+        let newRow = document.createElement('div')
+
+        newRow.classList.add('row')
+
+        for (let itemIndex = 0; itemIndex < ITEM_AMOUNT; ++itemIndex) {
+            newRow.innerHTML += `<div class="row-item">
+        <img src="${bestSellingProducts[productIndex].imgPath}" class="${bestSellingProducts[productIndex].className}" onclick="changePage('${bestSellingProducts[productIndex].alias}')" alt="">
         <div class="brief">
             <div class="type">
-                <p>${product.type}</p>
+                <p>${bestSellingProducts[productIndex].type}</p>
             </div>
-            <div class="name" class="${product.className}" onclick="changePage('${product.alias}');prepareProductPage()">
-                <p>${product.name}</p>
+            <div class="name" class="${bestSellingProducts[productIndex].className}" onclick="changePage('${bestSellingProducts[productIndex].alias}');prepareProductPage()">
+                <p>${bestSellingProducts[productIndex].name}</p>
             </div>
             <div class="price">
-                <p>${product.price}$</p>
+                <p>${bestSellingProducts[productIndex].price}$</p>
             </div>
             
         </div>
     </div>`
+            ++productIndex
+        }
+        section.appendChild(newRow)
+    }
+
+
+
 }
-//     `<div class="cart">
-//     <a>THÊM VÀO GIỎ</a>
+var intervalContainer
+function flashSaleSetter(){
     
-// </div>`
-    section.appendChild(newRow)
 }
 
 //ONCE - Home page loader
 fetch('sub-pages/home-main.html')
     .then(res => res.text())
-    .then(content => {
+    .then(async (content) => {
         setMain(content)
+        await productDataGetter()
         productLoader(bestSellingProducts)
         bannerLoader()
+        console.log(bestSellingProducts)
     })
 
 //home
