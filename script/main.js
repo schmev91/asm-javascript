@@ -14,7 +14,7 @@ function changePage(alias) {
         , isProduct = !mainPages.includes(alias)
         , path = `sub-pages/${alias}-main.html`
 
-        if(isProduct) path = `sub-pages/products/${alias}-main.html`
+    if (isProduct) path = `sub-pages/products/${alias}-main.html`
 
     //html
     fetch(path)
@@ -24,15 +24,16 @@ function changePage(alias) {
             if (isHome) {
                 productLoader(bestSellingProducts)
                 bannerLoader()
+                flashSaleLoadder()
             }
             return
         })
-        .then(()=>{
+        .then(() => {
             if (isProduct) productScript()
         })
     //css
     setStyle(`asset/stylesheet/${isProduct ? "product" : alias}.css`)
-    
+
 }
 
 function setNavigate(className, path) {
@@ -165,9 +166,52 @@ function productLoader() {
 
 
 }
-var intervalContainer
-function flashSaleSetter(){
-    
+
+
+
+var THREE_HOURS = new Date('1970-01-01T' + '03:00')
+    , MARKED_TIME = new Date()
+    , timeAlias = ['Hours', 'Minutes', 'Seconds']
+    , isCountingDown = false
+function flashSaleLoadder() {
+    let briefCollection = document.getElementsByClassName('brief')
+
+    for (brief of briefCollection) {
+        let countDownContainer = document.createElement('div')
+
+        countDownContainer.innerText = 'FLASHSALE '
+
+        countDownContainer.classList.add('countdown-container')
+        timeAlias.forEach((alias, index) => {
+            let newSpan = document.createElement('span')
+            newSpan.classList.add(`countdown-${alias}`)
+            countDownContainer.appendChild(newSpan)
+            if (index != 2) countDownContainer.innerHTML += ':'
+        })
+        brief.appendChild(countDownContainer)
+    }
+    if(!isCountingDown){
+        setInterval(flashSaleHandler, 1000)
+        isCountingDown = true
+    }
+
+}
+function flashSaleHandler() {
+    let isHomePage = Boolean(document.getElementsByClassName('countdown-container'))
+    if (isHomePage) {
+        let countdownCollection = document.getElementsByClassName('countdown-container')
+            , differ = new Date().getTime() - MARKED_TIME.getTime()
+            , COUNTDOWN = new Date(THREE_HOURS.getTime() - differ)
+            
+        for (let countdown of countdownCollection) {
+            timeAlias.forEach(alias => {
+                countdown.querySelector(`.countdown-${alias}`).innerText
+                    = COUNTDOWN[`get${alias}`]()
+            })
+        }
+
+    }
+
 }
 
 //ONCE - Home page loader
@@ -178,7 +222,7 @@ fetch('sub-pages/home-main.html')
         await productDataGetter()
         productLoader(bestSellingProducts)
         bannerLoader()
-        console.log(bestSellingProducts)
+        flashSaleLoadder()
     })
 
 //home
