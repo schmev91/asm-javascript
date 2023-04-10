@@ -167,7 +167,7 @@ function productLoader() {
 
 }
 
-
+    
 
 var THREE_HOURS = new Date('1970-01-01T' + '03:00')
     , MARKED_TIME = new Date()
@@ -236,7 +236,13 @@ function overlayLoader(path) {
     fetch(path)
         .then(res => res.text())
         .then(data => {
-            document.querySelector('.overlay').innerHTML = data
+            let overlaySection = document.querySelector('.overlay')
+            overlaySection.innerHTML = data
+
+            const stopDefault = (e)=>{e.preventDefault()}
+            overlaySection.querySelector('form')
+            .addEventListener('submit',stopDefault)
+            
         })
 
     displayOverlay()
@@ -246,4 +252,25 @@ function hideOverlay() {
 }
 function displayOverlay() {
     document.querySelector('.overlay').classList.remove('hidden')
+}
+
+//FORM-SUBMIT
+function formValidate(target){
+    let inputCollection = target.querySelectorAll('input:not([type="submit"])')
+    , isValid = true
+    for(let input of inputCollection)
+    {
+        if(!input.value){
+            input.style.setProperty('border','2px solid crimson')
+            isValid = false
+        } else {
+            input.style.setProperty('border','border: 1px groove #ccc')
+        }
+    }
+    if(!isValid){
+        inputCollection[0].focus()
+        alert('Bạn chưa nhập đủ thông tin cần thiết!')
+    }
+
+    return isValid
 }

@@ -38,6 +38,7 @@
     border-radius: 6px;
     font-size: small;
     height: 42px;
+    outline: none;
 }
 
 .overlay input[type="submit"] {
