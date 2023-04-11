@@ -167,7 +167,7 @@ function productLoader() {
 
 }
 
-    
+
 
 var THREE_HOURS = new Date('1970-01-01T' + '03:00')
     , MARKED_TIME = new Date()
@@ -190,7 +190,7 @@ function flashSaleLoadder() {
         })
         brief.appendChild(countDownContainer)
     }
-    if(!isCountingDown){
+    if (!isCountingDown) {
         setInterval(flashSaleHandler, 1000)
         isCountingDown = true
     }
@@ -202,7 +202,7 @@ function flashSaleHandler() {
         let countdownCollection = document.getElementsByClassName('countdown-container')
             , differ = new Date().getTime() - MARKED_TIME.getTime()
             , COUNTDOWN = new Date(THREE_HOURS.getTime() - differ)
-            
+
         for (let countdown of countdownCollection) {
             timeAlias.forEach(alias => {
                 countdown.querySelector(`.countdown-${alias}`).innerText
@@ -239,10 +239,10 @@ function overlayLoader(path) {
             let overlaySection = document.querySelector('.overlay')
             overlaySection.innerHTML = data
 
-            const stopDefault = (e)=>{e.preventDefault()}
+            const stopDefault = (e) => { e.preventDefault() }
             overlaySection.querySelector('form')
-            .addEventListener('submit',stopDefault)
-            
+                .addEventListener('submit', stopDefault)
+
         })
 
     displayOverlay()
@@ -255,22 +255,37 @@ function displayOverlay() {
 }
 
 //FORM-SUBMIT
-function formValidate(target){
+function formValidate(target) {
     let inputCollection = target.querySelectorAll('input:not([type="submit"])')
-    , isValid = true
-    for(let input of inputCollection)
-    {
-        if(!input.value){
-            input.style.setProperty('border','2px solid crimson')
+        , isValid = true
+    for (let input of inputCollection) {
+        if (!input.value) {
+            input.style.setProperty('border', '2px solid crimson')
             isValid = false
         } else {
-            input.style.setProperty('border','border: 1px groove #ccc')
+            input.style.setProperty('border', '1px groove #ccc')
         }
     }
-    if(!isValid){
+
+    if (!isValid) {
         inputCollection[0].focus()
         alert('Bạn chưa nhập đủ thông tin cần thiết!')
     }
 
+    //CONFIRM PASSWORD
+    if (inputCollection.length > 2 && isValid) {
+        let password = inputCollection[1]
+            , confirmPassword = inputCollection[2]
+
+        if (password.value != confirmPassword.value) {
+            isValid = false
+            confirmPassword.focus()
+            confirmPassword.style.setProperty('border', '2px solid crimson')
+            alert('Mật khẩu xác nhận không khớp với mật khẩu đã nhập!')
+        }
+
+    }
+
+    if(isValid) alert('Chúc mừng bạn đã nhập thành công!')
     return isValid
 }
